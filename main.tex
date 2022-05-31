@@ -1,0 +1,455 @@
+
+\documentclass{article}
+\usepackage[landscape]{geometry}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{amsmath,amssymb}
+
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\makeatletter
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\m}{\cdot}
+\newcommand{\vect}[1]{\mathbf{#1}} 
+
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+
+\title{Analysis 2 Cheat Sheet}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+
+\advance\topmargin-.8in
+\advance\textheight3in
+\advance\textwidth3in
+\advance\oddsidemargin-1.5in
+\advance\evensidemargin-1.5in
+\parindent0pt
+\parskip2pt
+\newcommand{\hr}{\centerline{\rule{3.5in}{1pt}}}
+%\colorbox[HTML]{e4e4e4}{\makebox[\textwidth-2\fboxsep][l]{texto}
+\begin{document}
+
+\begin{center}{\huge{\textbf{Analysis 2 Cheat Sheet}}}\\
+\end{center}
+\begin{multicols*}{3}
+
+\tikzstyle{mybox} = [draw=black, fill=white, very thick,
+    rectangle, rounded corners, inner sep=10pt, inner ysep=10pt]
+\tikzstyle{fancytitle} =[fill=black, text=white, font=\bfseries]
+
+
+%------------ Vektorräume allgemein---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Eine Menge $V$ heißt \textcolor{red}{$\K$-Vektorraum}, wenn:\\
+    1. $\forall \vect{v}_1, \vect{v}_2 \in V: \vect{v}_1 + \vect{v}_2 \in V$\\
+	2. $\forall \vect{v} \in V \forall k \in \K: k\m \vect{v} \in V $ \\
+	3. $\forall \vect{v}_1, \vect{v}_2 \in V: \vect{v}_1 + \vect{v}_2 = \vect{v}_2 + \vect{v}_1 $ \\
+	4. $\forall \vect{v}_1, \vect{v}_2, \vect{v}_3 \in V: (\vect{v}_1 + \vect{v}_2) + \vect{v}_3 = \vect{v}_1 + (\vect{v}_2 + \vect{v}_3) $ \\
+	5. $\forall \vect{v} \in V \exists \vect{0} \in V: \vect{0} + \vect{v} = \vect{v} + \vect{0} = \vect{v}$ \\
+    6. $\forall \vect{v} \in V \exists \vect{v}' \in V : \vect{v} + \vect{v}' = \vect{v}' + \vect{v} = \vect{0} $ \\
+    7. $\forall \vect{v} \in V \exists 1 \in \K : 1\m \vect{v} = \vect{v}$ \\
+    8. $\forall \vect{v} \in V \forall k,l \in \K: (k\m l)\m \vect{v} = k \m (l\m \vect{v})$ \\
+    9. $\forall \vect{v}_1, \vect{v}_2 \in V \forall k \in \K : k\m (\vect{v}_1 + \vect{v}_2) = k\m \vect{v}_1 + k\m \vect{v}_2$ \\
+    10. $\forall \vect{v} \in V \forall k,l \in \K: (k+l)\m \vect{v} = k\m \vect{v} + l\m \vect{v}$
+    \end{minipage}
+};
+
+%------------ Vektorräume allgemein Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Vektorräume};
+\end{tikzpicture}
+
+
+%------------ Vektorräume über K---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Ist $V \subseteq \K^n$, dann ist $V$ ein $\K$-VR, g.d.w.:\\
+    1. $\forall \vect{v}_1, \vect{v}_2 \in V: \vect{v}_1 + \vect{v}_2 \in V$\\
+	2. $\forall \vect{v} \in V \forall k \in \K: k\m \vect{v} \in V$\\
+	(Die Addition und Skalarmultiplikation ist hierbei komponentenweise.)
+    \end{minipage}
+};
+%------------ Vektorräume über K Header ---------------------
+\node[fill=blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Vektorräume im $\K^n$};
+\end{tikzpicture}
+
+%------------ Vektorräume Beispiele---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $\R^n, \C^n$\\
+    $\mathcal{C}^k(D)$ für $k\in\N_0\cup \{\infty\}$ - Raum der k-mal stetig diff.baren Funktionen mit Definitionsbereich $D$.\\
+    $\mathcal{L}^p(\Omega, \mathcal{A}, \mu) :=$\\$ \{f: \Omega \to \K | \text{f ist messbar}, \int_\Omega |f(x)|^p d\mu(x) < \infty\}$
+
+    \end{minipage}
+};
+%------------ Vektorräume Beispiele ---------------------
+\node[fill = purple, text=white, font=\bfseries, right=10pt] at (box.north west) {Wichtige Vektorräume};
+\end{tikzpicture}
+
+%------------ Normierte Vektorräume ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Sei $X$ ein $\K$-VR. Eine Fkt. $\Vert \cdot \Vert: X \to \R$ heißt \textcolor{red}{Norm} auf $X$, wenn:\\
+    1. $\forall \vect{x} \in X: \Vert \vect{x} \Vert = 0 \iff \vect{x} = 0$\\
+    2. $\forall \vect{x} \in X \forall \lambda \in \K: \Vert \lambda \vect{x} \Vert = \lvert \lambda \lvert \Vert \vect x \Vert$\\
+    3. $\forall \vect x, \vect y \in X: \Vert \vect x + \vect y \Vert \leq \Vert \vect x \Vert + \Vert \vect y \Vert.$\\
+    $(X, \Vert \cdot \Vert)$ heißt \textcolor{red}{normierten Vektorraum}
+    \end{minipage}
+};
+%------------ Normierte Vektorräume Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Normierte Vektorräume};
+\end{tikzpicture}
+
+%------------ Normen Beispiele---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $\Vert \vect x \Vert_p:= \sqrt[p]{\sum_{i=1}^n \lvert x_i \lvert^p}$ heißt allgemein p-Norm.\\
+    $\Vert \vect x \Vert_\infty := \max\{x_1,\dots,x_n\}$ heißt Maximumsnorm.\\
+    $\Vert \vect x \Vert_1 := \sum_{i=1}^n \lvert x_i\lvert$ heißt Summennorm.\\
+    $\Vert \vect x \Vert_2 := \sqrt[2]{\sum_{i=1}^n \lvert x_i\lvert^2}$ heißt Euklidische Norm.\\
+    $\Vert A \Vert_F := \sqrt{\sum_{i=1}^m\sum_{j=1}^n \lvert a_{ij} \lvert^2}$ heißt Frobeniusnorm.\\
+    $\Vert [f] \Vert_{L^p(\Omega)} := (\int_{\Omega} \lvert f(x) \lvert^p dx)^\frac1p$ heißt $L^p$-Norm.\\
+    $\Vert f \Vert_\infty := \sup\{f(x) | x\in D\}$ heißt Supremumsnorm
+    \end{minipage}
+};
+%------------ Normen Beispiele Header---------------------
+\node[fill = purple, text=white, font=\bfseries, right=10pt] at (box.north west) {Wichtige Normen};
+\end{tikzpicture}
+
+%------------ Offene und abgeschlossene Mengen ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Sei $(X, \Vert \cdot \Vert)$ ein normierter VR. Wir definieren:\\
+    $B_\varepsilon(\vect x) := \{ y \in X| \Vert \vect x- \vect y \Vert < \varepsilon\}$ (\textcolor{red}{offener Ball um $\vect x$}).\\
+    $\Bar{B}_\varepsilon(\vect x) := \{ y \in X| \Vert \vect x- \vect y \Vert \leq \varepsilon\}$ (\textcolor{red}{abgesch. Ball um $\vect x$}).\\
+    $S_\varepsilon(\vect x) := \{ y \in X| \Vert \vect x- \vect y \Vert = \varepsilon\}$ (\textcolor{red}{Sphäre um $\vect x$}).\\
+    \\
+    $\vect x$ ist \textcolor{red}{innerer Punkt von $A$}, wenn $\exists \varepsilon>0: B_\varepsilon(\vect x) \subseteq A$. Die Menge aller inneren Punkte von $A$ heißt \textcolor{red}{das Innere von A} ($A^\circ$ oder int $A$).\\
+    $\vect x$ heißt \textcolor{red}{Randpunkt von $A$}, wenn $\forall \varepsilon > 0: A \cap B_\varepsilon(\vect x) \neq \emptyset \text{ und } A^c \cap B_\varepsilon(\vect x) \neq \emptyset$. Die Menge aller  Randpunkte von $A$ heißt \textcolor{red}{der Rand von A} ($\partial{A}$).\\
+    Die Menge $\Bar{A} = A \cup \partial{A}$ heißt \textcolor{red}{Abschluss von A}.
+
+    $\vect x$ heißt \textcolor{red}{Häufungspunkt von $A$}, wenn für $\forall \varepsilon > 0: |A \cap B_\varepsilon(\vect x)| = \infty$\\
+    $\vect x$ heißt \textcolor{red}{isolierter Punkt von $A$}, wenn $\exists \varepsilon > 0: B_\varepsilon(\vect x) \cap A = \{ \vect x \}. $\\
+    \\
+    $A$ heißt \textcolor{red}{offen in X}, wenn $A = A^\circ$.\\
+    $A$ heißt \textcolor{red}{abgeschlossen in $X$}, wenn $A^c$ offen ist.
+    \end{minipage}
+};
+%------------ Offene und abgeschlossene Mengen Header ---------------------
+\node[fill = black, text=white, font=\bfseries, right=10pt] at (box.north west) {Offene und abgeschlossene Mengen};
+\end{tikzpicture}
+
+%------------ Offene und abgeschlossene Mengen Sätze ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Sei $(X, \Vert \cdot \Vert)$ ein normierter VR, $A \subseteq X$, $A_i \subseteq X$ offen $\forall i \in \N$ und $B_j \subseteq X$ abgeschlossen $\forall j \in \N$. Dann gilt:
+    \begin{enumerate}
+        \item $A$ ist offen $\iff \Bar{A}$ ist abgeschlossen.
+        \item $X$ und $\emptyset$ sind offen und abgeschlossen.
+        \item $\forall \vect x \in X: \{\vect x\}$ ist abgeschlossen.
+        \item $\bigcup_{i = 1}^{\infty} A_i$ offen.
+        \item $\bigcap_{i = 1}^{n} A_i$ offen.
+        \item $\bigcap_{j = 1}^{\infty} B_j$ abgeschlossen.
+        \item $\bigcup_{j = 1}^{n} B_j$ abgeschlossen.
+    \end{enumerate}
+    \end{minipage}
+};
+%------------ Offene und abgeschlossene Mengen Sätze Header ---------------------
+\node[fill = blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Eigenschaften von offenen/abges. Mengen};
+\end{tikzpicture}
+
+%------------ Offene und abgeschlossene Mengen Beispiel ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \begin{enumerate}
+        \item Für $X = \R$ und $A = (0,1]$ ist $A^\circ = (0,1)$, $\partial A = \{0,1\}$, $\Bar{A} = [0,1]$
+        \item Für $X = \R$ und $A = \Q$ ist $A^\circ = \emptyset$, $\partial A = \Bar{A} = \R$
+    \end{enumerate}
+    \end{minipage}
+};
+%------------ Offene und abgeschlossene Mengen Beispiel Header ---------------------
+\node[fill = purple, text=white, font=\bfseries, right=10pt] at (box.north west) {Beispiel von offenen/abges. Mengen};
+\end{tikzpicture}
+
+%------------ Konvergenz ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Sei $(\vect x^k)_{k \in \N}$ eine Folge im normierten VR $(X,\Vert \cdot \Vert)$
+    \begin{enumerate}
+        \item $(\vect x^k)_{k \in \N}$ heißt \textcolor{red}{beschränkt}, wenn $\{\Vert \vect x^k \Vert| k \in \N\}$ in $\R$ beschränkt ist.
+        \item $(\vect x^k)_{k \in \N}$ heißt \textcolor{red}{konvergent mit Limes $\vect y \in X$}, wenn $\forall \varepsilon > 0 \exists N \in \N \forall k>N: \Vert \vect x^k - \vect y \Vert < \varepsilon$
+        \item $(\vect x^k)_{k \in \N}$ heißt \textcolor{red}{Cauchyfolge in $X$}, wenn\\ $\forall \varepsilon > 0 \exists N \in \N \forall k, l > N: \Vert \vect x^k - \vect x^l \Vert < \varepsilon$
+        \item $\vect y\in X$ heißt \textcolor{red}{Häufungspunkt von $(\vect x^k)_{k \in \N}$}, wenn $\forall \varepsilon > 0: |\{\vect x^k| k \in \N\} \cap B_\varepsilon(\vect y)| = \infty$\\
+    \end{enumerate}
+    \end{minipage}
+};
+%------------Konvergenz Header ---------------------
+\node[fill = black, text=white, font=\bfseries, right=10pt] at (box.north west) {Konvergenz in normierten VR};
+\end{tikzpicture}
+
+%------------ Konvergenz Sätze ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Sei $(\vect x^k)_{k \in \N}$ eine Folge im normierten VR $(X,\Vert \cdot \Vert)$\\
+    1. $(\vect x^k)_{k \in \N}$ konvergiert $\implies (\vect x^k)_{k \in \N}$ ist beschränkt.\\
+    2. $\vect y \in X$ ist Häufungspunkt von $(\vect x^k)_{k \in \N} \iff (\vect x^k)_{k \in \N}$ hat eine Teilfolge die gegen $\vect y$ konvergiert.\\
+    3. $(\vect x^k)_{k \in \N}$ konvergiert $\implies (\vect x^k)_{k \in \N}$ ist Cauchyfolge.\\
+    4. Sei $(\vect x^k)_{k \in \N}$ eine Folge in $\K^n$:\\
+    $(\vect x^k)_{k \in \N}$ konvergiert $\iff \forall j: (x_j^k)_{k \in \N}$ konvergiert.\\
+    $(\vect x^k)_{k \in \N}$ ist Cauchy $\iff \forall j: (x_j^k)_{k \in \N}$ ist Cauchy.\\
+    5. $A \subseteq X$ ist abgeschlossen $\iff$ Der Grenzwert jeder Folge in $A$, die in $X$ konvergiert, hat ihren Grenzwert in $A$.
+    \end{minipage}
+};
+%------------Konvergenz Sätze Header ---------------------
+\node[fill = blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Konvergenzsätze};
+\end{tikzpicture}
+
+%------------ Banachraum ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Ein normierten VR $(X,\Vert \cdot \Vert)$ heißt \textcolor{red}{vollständig}, wenn jede Cauchyfolge in $X$ konvergiert. Ein vollständiger normierter VR heißt \textcolor{red}{Banachraum}.
+    \end{minipage}
+};
+%------------ Banachraum Header ---------------------
+\node[fill = black, text=white, font=\bfseries, right=10pt] at (box.north west) {Banachraum};
+\end{tikzpicture}
+
+%------------ Banachraum Sätze---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    1. Sei $(\vect x^k)_{k \in \N}$ eine Folge im Banachraum $(X,\Vert \cdot \Vert)$.\\
+    $(\vect x^k)_{k \in \N}$ konvergiert $\iff (\vect x^k)_{k \in \N}$ ist Cauchyfolge.
+    2. Ist $(X,\Vert \cdot \Vert)$ ein endlichdimensionaler normierter VR, dann ist $X$ ein Banachraum.
+    \end{minipage}
+};
+%------------ Banachraum Sätze Header ---------------------
+\node[fill = blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Banachraum Sätze};
+\end{tikzpicture}
+
+
+%------------ Banachraum Beispiel---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \begin{enumerate}
+        \item $(\K^n, \Vert \cdot \Vert_p)$ ist ein Banachraum.
+        \item \href{https://math.stackexchange.com/questions/617195/show-that-c0-1-is-not-a-banach-space-with-the-given-norm}{Kein Banachraum}
+        \item Bsp. 1.33 (b) im Skript ist kein Banachraum.
+    \end{enumerate}
+    \end{minipage}
+};
+%------------ Banachraum Beispiel Header ---------------------
+\node[fill = purple, text=white, font=\bfseries, right=10pt] at (box.north west) {Banachraum Beispiel};
+\end{tikzpicture}
+
+\newpage
+Ab jetzt bezeichnen wir die normierten Vektorräume\\
+$(X,\Vert \cdot \Vert_X)$ und $(Y,\Vert \cdot \Vert_Y)$ als $X$ und $Y$.\\
+
+%------------ Grenzwerte und Stetigkeit von Funktionen ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Sei $A \subseteq X$ und $f: A \to Y$ eine Fkt. Ist $\vect x^0 \in X$ ein HP von $A$, dann sagen wir
+    $f$ hat den \textcolor{red}{Grenzwert/Limes} $\vect y^0 \in Y$ für $\vect x \to \vect x^0$, wenn\\
+    $\forall \varepsilon > 0 \exists \delta > 0 \forall \vect x \in A \cap B_{\delta}(\vect x^0) \backslash \{\vect x^0\}: \Vert f(\vect x) - \vect y^0 \Vert < \varepsilon$.\\
+    \\
+    Ist $\vect x^0 \in A$, so heißt $f$ \textcolor{red}{stetig in $\vect x^0$}, wenn \\
+    $\forall \varepsilon > 0 \exists \delta > 0 \forall \vect x \in A \cap B_{\delta}(\vect x^0): \Vert f(\vect x) - f(\vect x^0) \Vert < \varepsilon$.\\
+    $f$ heißt stetig in $A$, wenn $\forall \vect x^0 \in A: f$ ist stetig in $\vect x^0$.
+    \end{minipage}
+};
+%------------ Grenzwerte und Stetigkeit von Funktionen Header ---------------------
+\node[fill = black, text=white, font=\bfseries, right=10pt] at (box.north west) {Grenzwerte und Stetigkeit};
+\end{tikzpicture}
+
+%------------ Grenzwerte und Stetigkeit von Funktionen Sätze ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Sei $A \subseteq X$ und $f: A \to Y$ eine Fkt. Ist $\vect x^0 \in X$ ein HP von $A$, dann gilt:
+    \begin{enumerate}
+        \item $\lim \limits_{\vect x \to \vect x^0} f(\vect x) = \vect y^0 \iff \forall \vect (x^k)_{k \in \N} \text{ in } A\backslash \{\vect x^0\}:$ \\ $\lim \limits_{k \to \infty} \vect x^k = \vect x^0 \implies \lim \limits_{k \to \infty} f(\vect x^k) = \vect y^0$
+        \item $f$ ist in $\vect x^0$ stetig $\iff \forall \vect (x^k)_{k \in \N} \text{ in } A:$ \\
+        $\vect x^k \xrightarrow[]{k \to \infty} \vect x^0 \implies f(\vect x^k) \xrightarrow[]{k \to \infty} f(\vect x^0)$
+    \end{enumerate}
+
+    \end{minipage}
+};
+%------------ Grenzwerte und Stetigkeit von Funktionen Sätze Header ---------------------
+\node[fill = blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Folgenkriterium};
+\end{tikzpicture}
+
+%------------ Koordinatenfunktionen und Projektionen ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \begin{enumerate}
+        \item Die Funktion $\pi_j:\K^n \to \K, \pi_j(z_1,\dots,z_n) := z_j$ heißt Projektion.
+        \item Für $A \subseteq X$ und die Fkt. $f:A \to \K^n$ heißen die Funktionen $f_j := f \circ \pi_j: A \to \K$ Koordinatenfunktionen von $f$.
+    \end{enumerate}
+    \end{minipage}
+};
+%------------ Koordinatenfunktionen und Projektionen Header ---------------------
+\node[fill = black, text=white, font=\bfseries, right=10pt] at (box.north west) {Koordinatenfunktionen und Projektionen};
+\end{tikzpicture}
+
+
+%------------ Sätze für Koordinatenfunktionen ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \begin{enumerate}
+        \item Konstante Funktionen sind stetig.
+        \item Ist $(z^k)_{k \in \N}$ eine Folge in $\K^n$ mit $\lim \limits_{k \to \infty} z^k = z^0$, so gilt $\forall j \in \{1,\dots,n\}: \lim \limits_{k \to \infty} z_j^k = z_j^0$\\
+        und daher sind alle Projektionen\\ $\pi_j:\K^n \to \K, \pi_j(z_1,\dots,z_n) := z_j$ stetig.
+        \item Für $A \subseteq X, \vect x^0 \in A$ und die Fkt. $f:A \to \K^n$ mit $f(\vect x) = (f_1(\vect x), \dots, f_n(\vect x))$ gilt:\\
+        $f$ ist stetig in $\vect x^0 \iff $ alle $f_j$ sind stetig in $\vect x^0$.
+    \end{enumerate}
+    \end{minipage}
+};
+%------------ Sätze für Koordinatenfunktionen Header ---------------------
+\node[fill = blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Sätze für Koordinatenfunktionen und Proj.};
+\end{tikzpicture}
+
+%------------ Verknüpfungen von Funktionen ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Seien $f,g:X \to Y$ Fkt. stetig in $\vect x^0$ und $\lambda \in \K$. Dann sind $f+g$, $\lambda f$, $f\cdot g$, $\frac{f}{g}$ für $g \neq 0$, $\mid f \mid$, $\max\{g,f\}$, $\min\{g,f\}$, $f^+ = \max\{0,f\}$ und $f^- = -\min\{0,f\}$ stetig in $\vect x^0$ sofern überhaupt wohldefiniert.\\
+    \\
+    Ist $Z$ ein weiterer normierter VR und $h: Y \to Z$ eine Fkt. die stetig in $f(\vect x^0)$ ist. Dann ist $h \circ f: X \to Z$ stetig in $\vect x^0$, sofern überhaupt wohldefiniert.
+    \end{minipage}
+};
+%------------ Verknüpfungen von Funktionen Header ---------------------
+\node[fill = blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Verknüpfungen von Funktionen};
+\end{tikzpicture}
+
+%------------ Verknüpfungen von Funktionen Beispiel---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Sei $f:\R^+ \times \C \to \C, f(x,z):= x^z = \exp(z\log(x))$. $f$ ist stetig, weil $f(x,z) = \exp(\pi_2(x,z)\log(\pi_1(x,z)))$ bzw.$f = \exp \circ (\pi_2 \cdot (\log \circ \pi_1))$ eine Verkettung bzw. Multiplikation stetiger Funktionen ist und somit laut dem Satz oben wieder stetig ist.
+    \end{minipage}
+};
+%------------ Verknüpfungen von Funktionen Beispiel Header ---------------------
+\node[fill = purple, text=white, font=\bfseries, right=10pt] at (box.north west) {Stetigkeit Beispiel};
+\end{tikzpicture}
+
+%------------ Stetigkeit von Funktionen in einer Koordinate ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Sei $f:\K^n \to Y$ und $\vect x^0 = (x_1^0, x_2^0, \dots, x_n^0) \in \K^n$. Wir nennen $f$ \textcolor{red}{stetig in $\vect x^0$ bezüglich der j-ten Komponente $x_j^0$}, wenn die Funktion $\phi:\K \to Y$ mit\\ 
+    $\phi(x) := f(x_1^0, \dots, x_{j-1}^0, x, x_{j+1}^0, \dots, x_n^0)$\\ 
+    stetig in $x = x_j^0$ ist.\\
+    \\
+    Lemma: Ist $f$ stetig in $x^0$, so ist $f$ stetig in jeder Komponente von $x^0$. \textcolor{red}{\textbf{!}} Umkehrung gilt nicht im allgemeinen.
+    \end{minipage}
+};
+%------------ Stetigkeit von Funktionen in einer Koordinate Header ---------------------
+\node[fill = black, text=white, font=\bfseries, right=10pt] at (box.north west) {Stetigkeit bezüglich Koordinaten};
+\end{tikzpicture}
+
+%------------ Stetigkeit von Funktionen in einer Koordinate Beispiel ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $f$ kann in allen Komponenten von $\vect x^0$ stetig sein ohne in $\vect x^0$ stetig zu sein. Sei $\vect x^0 = (0,0)$. Definiere $f:\K^2 \to \K$ mit \\
+    $f(x_1,x_2) = \begin{cases} 0 & x_1x_2 = 0 \\ 1 & x_1x_2\neq 0 \end{cases}$, dann sind \\$\phi_1(x_1) := f(x_1,0), \phi_2(x_2) := f(0,x_2)$ beide konstant gleich 0 und somit stetig in $x_1=0$ bzw. $x_2=0$. Also ist $f$ stetig in jeder Komponente von $\vect x^0 = (0,0)$. Aber $f$ ist nicht stetig in $\vect x^0$, weil z.B. für die Folge\\
+    $(x_1^k,x_2^k) = \begin{cases} (\frac1k,0) &  \text{für k gerade} \\ (\frac1k, \frac1k) & \text{für k ungerade} \end{cases}$ gilt, dass \\
+    $\lim \limits_{k \to \infty} (x_1^k, x_2^k) = (0,0)$, jedoch $f(x_1^k,x_2^k) = 1$ für alle ungeraden $k$. Also konvergiert $f(x_1^k,x_2^k)$ nicht gegen $f(0,0) = 0$ und somit ist $f$ nicht stetig in $\vect x^0 = (0,0)$.
+    \end{minipage}
+};
+%------------ Stetigkeit von Funktionen in einer Koordinate Beispiel Header ---------------------
+\node[fill = purple, text=white, font=\bfseries, right=10pt] at (box.north west) {Stetigkeit bezüglich Koordinaten Beispiel};
+\end{tikzpicture}
+
+%------------ Monome und Polynome ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Sei $n \in \N$ und $p = (p_1,\dots,p_n) \in (\N_0)^n$.\\
+    $p$ heißt \textcolor{red}{Multiindex} und $\mid p \mid:= p_1 + \dots + p_n$ heißt \textcolor{red}{Grad von $p$}.\\
+    Für $\vect x = (x_1,\dots,x_n) \in \K^n$ setze $x^p := x_1^{p_1} \cdot \dots \cdots x_n^{p_n}$. Die Funktion $f(\vect x) = x^p = x_1^{p_1} \cdot \dots \cdots x_n^{p_n}$ heißt\\ \textcolor{red}{Monom vom Grad $\mid p \mid$}.\\
+    Eine Linearkombination von Monomen heißt \textcolor{red}{Polynom}. D.h. $P$ ist ein Polynom, wenn $P:\K^n \to \K$, mit
+    $P(\vect x) = P((x_1,\dots,x_n)) = \sum_{k \geq \mid p\mid} a_px^p$ für $k \in \N_0$ und $a_p \in \K$.\\
+    Für zwei Polynome $P, Q$ heißt $\frac{P}{Q}$ \textcolor{red}{rationale Funktion}.
+    \end{minipage}
+};
+%------------ Monome und Polynome Header ---------------------
+\node[fill = black, text=white, font=\bfseries, right=10pt] at (box.north west) {Monome/Polynome};
+\end{tikzpicture}
+
+%------------ Monome und Polynome ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \begin{center}
+        \begin{tabular}{ |c|c|c| } 
+        \hline
+                &           & Grad \\ \hline
+        Monome  & $xy^2z^2$ & 5 \\ 
+                & $x^2y^2$  & 4 \\
+                & $x^2y$    & 3 \\
+                & $y$       & 1 \\
+                & $1$       & 0 \\ \hline
+        Polynome& $3xy^2z^2 + 4x^2y^2 - 2x^2y + 3y + 1$ & 5\\
+                & $(x + y)(x+z^2)$ & 3 \\
+                & $0x^2 + 2y$& 1 \\
+        \hline
+        \end{tabular}
+        \end{center}
+    \end{minipage}
+};
+%------------ Monome und Polynome Header ---------------------
+\node[fill = purple, text=white, font=\bfseries, right=10pt] at (box.north west) {Monome/Polynome Beispiel};
+\end{tikzpicture}
+
+%------------ Monome und Polynome Satz ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Jedes Polynom ist stetig; jede rationale Fkt. $\frac{P}{Q}$ ist stetig in $\vect x \in \K^n$, wenn $Q(\vect x) \neq 0$.
+    \end{minipage}
+};
+%------------ Monome und Polynome Satz Header ---------------------
+\node[fill = blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Monome/Polynome Stetigkeit};
+\end{tikzpicture}
+
+
+
+\end{multicols*}
+
+\end{document}
+
+
