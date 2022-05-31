@@ -46,14 +46,13 @@
 %\colorbox[HTML]{e4e4e4}{\makebox[\textwidth-2\fboxsep][l]{texto}
 \begin{document}
 
-\begin{center}{\huge{\textbf{Analysis 2 Cheat Sheet}}}\\
+\begin{center}{\Large{\textbf{Analysis 2 Cheat Sheet - Kapitel 1}}}\\
 \end{center}
 \begin{multicols*}{3}
 
 \tikzstyle{mybox} = [draw=black, fill=white, very thick,
     rectangle, rounded corners, inner sep=10pt, inner ysep=10pt]
 \tikzstyle{fancytitle} =[fill=black, text=white, font=\bfseries]
-
 
 %------------ Vektorräume allgemein---------------
 \begin{tikzpicture}
@@ -262,7 +261,7 @@
     \begin{minipage}{0.3\textwidth}
     \begin{enumerate}
         \item $(\K^n, \Vert \cdot \Vert_p)$ ist ein Banachraum.
-        \item \href{https://math.stackexchange.com/questions/617195/show-that-c0-1-is-not-a-banach-space-with-the-given-norm}{Kein Banachraum}
+        \item \textcolor{blue}{\href{https://math.stackexchange.com/questions/617195/show-that-c0-1-is-not-a-banach-space-with-the-given-norm}{Kein Banachraum}}
         \item Bsp. 1.33 (b) im Skript ist kein Banachraum.
     \end{enumerate}
     \end{minipage}
@@ -300,7 +299,7 @@ $(X,\Vert \cdot \Vert_X)$ und $(Y,\Vert \cdot \Vert_Y)$ als $X$ und $Y$.\\
     \begin{enumerate}
         \item $\lim \limits_{\vect x \to \vect x^0} f(\vect x) = \vect y^0 \iff \forall \vect (x^k)_{k \in \N} \text{ in } A\backslash \{\vect x^0\}:$ \\ $\lim \limits_{k \to \infty} \vect x^k = \vect x^0 \implies \lim \limits_{k \to \infty} f(\vect x^k) = \vect y^0$
         \item $f$ ist in $\vect x^0$ stetig $\iff \forall \vect (x^k)_{k \in \N} \text{ in } A:$ \\
-        $\vect x^k \xrightarrow[]{k \to \infty} \vect x^0 \implies f(\vect x^k) \xrightarrow[]{k \to \infty} f(\vect x^0)$
+        $\lim \limits_{k \to \infty} \vect x^k = \vect x^0 \implies \lim \limits_{k \to \infty} f(\vect x^k) = f(\vect x^0)$
     \end{enumerate}
 
     \end{minipage}
@@ -435,18 +434,87 @@ $(X,\Vert \cdot \Vert_X)$ und $(Y,\Vert \cdot \Vert_Y)$ als $X$ und $Y$.\\
 \node[fill = purple, text=white, font=\bfseries, right=10pt] at (box.north west) {Monome/Polynome Beispiel};
 \end{tikzpicture}
 
-%------------ Monome und Polynome Satz ---------------
+
+
+%------------ Skalarprodukt ---------------
 \begin{tikzpicture}
 \node [mybox] (box){%
     \begin{minipage}{0.3\textwidth}
-    Jedes Polynom ist stetig; jede rationale Fkt. $\frac{P}{Q}$ ist stetig in $\vect x \in \K^n$, wenn $Q(\vect x) \neq 0$.
+    Die Funktion $\langle \cdot, \cdot \rangle: X \times X \to \K$ heißt \textcolor{red}{inneres Produkt} oder \textcolor{red}{Skalarprodukt} auf $X$, wenn gilt:
+    \begin{itemize}
+        \item $\forall \vect x \in X: \langle \vect x, \vect x \rangle \geq 0$ und $\langle \vect x, \vect x \rangle = 0 \iff \vect x = 0$
+        \item $\forall \vect x, \vect y \in \K: \langle \vect x, \vect y \rangle = \overline{\langle \vect y, \vect x \rangle}$
+        \item $\forall \vect x, \vect y, \vect z \in X, \lambda, \mu \in \K:\\ \langle \lambda \vect x + \mu \vect y, \vect z \rangle = \lambda \langle \vect x, \vect z \rangle + \mu \langle \vect y, \vect z \rangle$
+    \end{itemize}
+    Ist $\langle \cdot, \cdot \rangle$ ein Skalarprodukt auf $X$, so definiert\\
+    $\Vert \cdot \Vert: X \to \R_0^+$, mit $\Vert \vect x \Vert = \sqrt{\langle \vect x, \vect x \rangle}$\\
+    eine Norm auf $X$. Diese nennen wir \textcolor{red}{die von $\langle \cdot, \cdot \rangle$ induzierte Norm}.
     \end{minipage}
 };
-%------------ Monome und Polynome Satz Header ---------------------
-\node[fill = blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Monome/Polynome Stetigkeit};
+%------------ Skalarprodukt Header ---------------------
+\node[fill = black, text=white, font=\bfseries, right=10pt] at (box.north west) {Skalarprodukt und induzierte Norm};
 \end{tikzpicture}
 
+%------------ Hilbertraum ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Ist $X$ ein $\K$-Vektorraum und $\langle \cdot, \cdot \rangle$ ein Skalarprodukt, so heißt $(X, \langle \cdot, \cdot \rangle)$ \textcolor{red}{Prähilbertraum} oder \textcolor{red}{Innenproduktraum}. Wenn die von $\langle \cdot, \cdot \rangle$ induzierte Norm $\Vert \cdot \Vert$ zusammen mit $X$ ein Banachraum bildet (vollständige Norm), dann nennen wir $(X, \langle \cdot, \cdot \rangle)$ einen \textcolor{red}{Hilbertraum}.
+    \end{minipage}
+};
+%------------ Hilbertraum Header ---------------------
+\node[fill = black, text=white, font=\bfseries, right=10pt] at (box.north west) {Hilbertraum};
+\end{tikzpicture}
 
+\newpage
+Ab jetzt bezeichnet $\langle \cdot, \cdot \rangle$ ein Skalarprodukt auf dem normierten $\K$-Vektorraum $X$\\
+%------------ Skalarprodukt Sätze---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Für $\langle \cdot, \cdot \rangle$ gilt:
+    \begin{itemize}
+        \item $\forall \vect x, \vect y, \vect z \in X, \lambda, \mu \in \K:\\ \langle \vect x, \lambda \vect y + \mu \vect z \rangle = \overline{\lambda} \langle \vect x, \vect y \rangle + \overline{\mu} \langle \vect x, \vect z \rangle$\\
+        Note: Für $\K = \R$ ist $\overline{\lambda} = \lambda$ und $\overline{\mu} = \mu$.
+        \item $\forall \vect x \in X: \langle 0, \vect x \rangle = \langle \vect x, 0 \rangle = 0$
+        \item (Cauchy-Schwarz-Ungleichung) Für die von $\langle \cdot, \cdot \rangle$ induzierte Norm $\Vert \cdot \Vert$ gilt\\
+        $\forall \vect x, \vect y \in X: \lvert \langle \vect x, \vect y \rangle \lvert \leq \Vert \vect x \Vert \cdot \Vert \vect y \Vert$\\
+        Gleichheit gilt g.d.w. $\vect x$ und $\vect y$ linear abhängig sind.
+    \end{itemize}
+    \end{minipage}
+};
+%------------ Skalarprodukt Sätze Header ---------------------
+\node[fill = blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Sätze für Skalarprodukte};
+\end{tikzpicture}
+
+%------------ Äquivalente Normen ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Seien $\Vert \cdot \Vert_1$ und $\Vert \cdot \Vert_2$ zwei Normen auf $X$ (beliebige Normen. Nicht verwechseln mit Notation für 1-Norm und 2-Norm).\\
+    Dann heißen $\Vert \cdot \Vert_1$ und $\Vert \cdot \Vert_2$ \textcolor{red}{äquivalent}, wenn\\$\exists a,b \in \R^+ \forall \vect x \in X: a\Vert \vect x \Vert_1 \leq \Vert \vect y \Vert_2 \leq b \Vert \vect x \Vert_1$.\\
+    In Worten: Normen sind äquivalent, wenn ihr Ergebnisse sich höchstens um einen konstanten Faktoren unterscheiden.
+    \end{minipage}
+};
+%------------ Äquivalente Normen Header ---------------------
+\node[fill = black, text=white, font=\bfseries, right=10pt] at (box.north west) {Äquivalente Normen};
+\end{tikzpicture}
+
+%------------ Äquivalente Normen Sätze ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Seien $\Vert \cdot \Vert_1$ und $\Vert \cdot \Vert_2$ zwei Normen auf $X$. Dann sind die beiden Aussagen äquivalent:
+    \begin{itemize}
+        \item $\Vert \cdot \Vert_1$ und $\Vert \cdot \Vert_2$ sind äquivalent.
+        \item $\forall (\vect x^k)_{k \in \N} \text{ in } X: \lim \limits_{k \to \infty} \vect x^k = \vect x^0 \text{ bzgl. } \Vert \cdot \Vert_1 \iff \lim \limits_{k \to \infty} \vect x^k = \vect x^0 \text{ bzgl. } \Vert \cdot \Vert_2$
+    \end{itemize}
+    \textcolor{red}{\textbf{!}} Auf $\K^n$ sind alle Normen äquivalent. D.h. alle Normen erzeugen die genau die gleichen konvergenten Folgen.
+    \end{minipage}
+};
+%------------ Äquivalente Normen Sätze Header ---------------------
+\node[fill = blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Sätze für äquivalente Normen};
+\end{tikzpicture}
 
 \end{multicols*}
 
