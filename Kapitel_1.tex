@@ -1,4 +1,3 @@
-
 \documentclass{article}
 \usepackage[landscape]{geometry}
 \usepackage{url}
@@ -46,8 +45,6 @@
 %\colorbox[HTML]{e4e4e4}{\makebox[\textwidth-2\fboxsep][l]{texto}
 \begin{document}
 
-\begin{center}{\Large{\textbf{Analysis 2 Cheat Sheet - Kapitel 1}}}\\
-\end{center}
 \begin{multicols*}{3}
 
 \tikzstyle{mybox} = [draw=black, fill=white, very thick,
@@ -84,7 +81,7 @@
     Ist $V \subseteq \K^n$, dann ist $V$ ein $\K$-VR, g.d.w.:\\
     1. $\forall \vect{v}_1, \vect{v}_2 \in V: \vect{v}_1 + \vect{v}_2 \in V$\\
 	2. $\forall \vect{v} \in V \forall k \in \K: k\m \vect{v} \in V$\\
-	(Die Addition und Skalarmultiplikation ist hierbei komponentenweise.)
+	(Die Addition und Skalarmultiplikation ist hierbei komponentenweise).
     \end{minipage}
 };
 %------------ Vektorräume über K Header ---------------------
@@ -97,7 +94,7 @@
     \begin{minipage}{0.3\textwidth}
     $\R^n, \C^n$\\
     $\mathcal{C}^k(D)$ für $k\in\N_0\cup \{\infty\}$ - Raum der k-mal stetig diff.baren Funktionen mit Definitionsbereich $D$.\\
-    $\mathcal{L}^p(\Omega, \mathcal{A}, \mu) :=$\\$ \{f: \Omega \to \K | \text{f ist messbar}, \int_\Omega |f(x)|^p d\mu(x) < \infty\}$
+    $\mathcal{L}^p(\Omega, \mathcal{A}, \mu) :=$\\$ \{f: \Omega \to \K | f\text{ ist messbar}, \int_\Omega |f(x)|^p d\mu(x) < \infty\}$
 
     \end{minipage}
 };
@@ -305,7 +302,7 @@ $(X,\Vert \cdot \Vert_X)$ und $(Y,\Vert \cdot \Vert_Y)$ als $X$ und $Y$.\\
     \end{minipage}
 };
 %------------ Grenzwerte und Stetigkeit von Funktionen Sätze Header ---------------------
-\node[fill = blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Folgenkriterium};
+\node[fill = blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Folgenkriterium für Stetigkeit};
 \end{tikzpicture}
 
 %------------ Koordinatenfunktionen und Projektionen ---------------
@@ -337,7 +334,7 @@ $(X,\Vert \cdot \Vert_X)$ und $(Y,\Vert \cdot \Vert_Y)$ als $X$ und $Y$.\\
     \end{minipage}
 };
 %------------ Sätze für Koordinatenfunktionen Header ---------------------
-\node[fill = blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Sätze für Koordinatenfunktionen und Proj.};
+\node[fill = blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Stetigkeit von Koord.fkt. und Proj.};
 \end{tikzpicture}
 
 %------------ Verknüpfungen von Funktionen ---------------
@@ -350,7 +347,7 @@ $(X,\Vert \cdot \Vert_X)$ und $(Y,\Vert \cdot \Vert_Y)$ als $X$ und $Y$.\\
     \end{minipage}
 };
 %------------ Verknüpfungen von Funktionen Header ---------------------
-\node[fill = blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Verknüpfungen von Funktionen};
+\node[fill = blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Stetigkeit von Verknüpfungen};
 \end{tikzpicture}
 
 %------------ Verknüpfungen von Funktionen Beispiel---------------
@@ -468,6 +465,7 @@ $(X,\Vert \cdot \Vert_X)$ und $(Y,\Vert \cdot \Vert_Y)$ als $X$ und $Y$.\\
 
 \newpage
 Ab jetzt bezeichnet $\langle \cdot, \cdot \rangle$ ein Skalarprodukt auf dem normierten $\K$-Vektorraum $X$\\
+\\
 %------------ Skalarprodukt Sätze---------------
 \begin{tikzpicture}
 \node [mybox] (box){%
