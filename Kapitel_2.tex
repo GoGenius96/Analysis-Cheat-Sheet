@@ -1,0 +1,113 @@
+\documentclass{article}
+\usepackage[landscape]{geometry}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{amsmath,amssymb}
+
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\makeatletter
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\m}{\cdot}
+\newcommand{\vect}[1]{\mathbf{#1}} 
+
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+
+\title{Analysis 2 Cheat Sheet}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+
+\advance\topmargin-.8in
+\advance\textheight3in
+\advance\textwidth3in
+\advance\oddsidemargin-1.5in
+\advance\evensidemargin-1.5in
+\parindent0pt
+\parskip2pt
+\newcommand{\hr}{\centerline{\rule{3.5in}{1pt}}}
+%\colorbox[HTML]{e4e4e4}{\makebox[\textwidth-2\fboxsep][l]{texto}
+\begin{document}
+
+\begin{multicols*}{3}
+
+\tikzstyle{mybox} = [draw=black, fill=white, very thick,
+    rectangle, rounded corners, inner sep=10pt, inner ysep=10pt]
+\tikzstyle{fancytitle} =[fill=black, text=white, font=\bfseries]
+
+%------------ Partielle Ableitungen allgemein---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Sei $A \subseteq \R^n$, $f:A \to \K$, $\vect x^0 \in A$ und $j \in \{1,\dots,n\}$. Gibt es ein $\varepsilon > 0$, s.d. $\forall h \in (-\varepsilon, \varepsilon): \vect x^0 + h\vect e_j \in A$, so nennen wir $f$ \textcolor{red}{in $\vect x^0$ partiell differenzierbar nach $x_j$}, wenn der Grenzwert $\lim \limits_{h \to 0} \frac{f(\vect x^0 + h\vect e_j) - f(\vect x^0)}{h}$ existiert.
+    Den Grenzwert nennen wir dann \textcolor{red}{$j$-te partielle Ableitung von $f$ in $\vect x^0$} und wird bezeichnet durch: $\partial_j f(\vect x^0)$, $\partial_{x_j} f(\vect x^0)$, $\frac{\partial f(\vect x^0)}{\partial x_j}$, $f_{x_j}(\vect x^0)$, $D_jf(\vect x^0)$\\
+    Randnotiz: Für $\vect x^0 \in \partial A$ definieren wir $\partial_j f(\vect x^0)$ so wie oben, bloss mit $h \in [0, \varepsilon)$ bzw. $h \in (\varepsilon, 0]$.\\
+    \\
+    Existieren alle partiellen Ableitungen von $f$ in $\vect x^0$, so nennen wir den (Zeilen)vektor $\nabla f(\vect x^0) = (\partial_1 f(\vect x^0),\dots, \partial_n f(\vect x^0))$ \textcolor{red}{Gradient von $f$ in $\vect x^0$}.\\
+    \\
+    Exisitert $\partial_j f(\vect x^0)$ für alle $\vect x^0 \in A$, so nennen wir die Funktion $\partial_j f: A \to \K, \vect x \mapsto \partial_j f(\vect x)$ die \textcolor{red}{$j$-te partielle Ableitung von $f$}.
+    
+    \end{minipage}
+};
+
+%------------ Partielle Ableitungen Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Partielle Ableitungen von $f:\R^n \to \K$};
+\end{tikzpicture}
+
+%------------ Partielle Ableitung berechnen ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Um die $\partial_jf(\vect x^0)$ zu berechnen, falls diese existiert, tun wir so, als seien alle $x_i$ mit $i\neq j$ konstant und berechnen die Ableitung der Funktion\\ $\phi(x) := f(x_1^0, \dots, x_{j-1}^0, x, x_{j+1}^0, \dots, x_n^0)$ in $x = x_j^0$ wie im 1-dimensionalen Fall.
+    \\
+    Beispiel:\\
+    Sei $f:\R^2\to \R, f(x_1,x_2) = x_1^2x_2 e^{2x_1+x_2} - 3x_2 + x_1$ und $\vect x^0 = (1,0)$. Dann ist\\
+    $\partial_1f(x_1,x_2) = 2x_1x_2e^{2x_1+x_2}+2x_1^2x_2e^{2x_1+x_2} + 1$\\
+    $\partial_2f(x_1,x_2) = x_1^2e^{2x_1+x_2}+x_1^2x_2e^{2x_1+x_2} - 3$\\
+    $\nabla f(\vect x^0) = (1, e^2-3)$
+    \end{minipage}
+};
+
+%------------ Partielle Ableitung berechnen Header ---------------------
+\node[fill=purple, text=white, font=\bfseries, right=10pt] at (box.north west) {Partielle Ableitung berechnen};
+\end{tikzpicture}
+
+
+
+%------------ Jacobimatrix ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Sei $A \subseteq \R^n$, $f:A \to \K^m$, $\vect x^0 \in A$. Existieren alle partiellen Ableitungen $\partial_jf_l(\vect x^0)$ für $j\in \{1,\dots,n\}, l\in \{1,\dots,m\}$, dann nennen wir die $m \times n$-Matrix\\
+    $\begin{bmatrix} \partial_1 f_1(\vect x^0) & \dots & \partial_n f_1(\vect x^0)\\ \vdots &  & \vdots \\ \partial_1 f_m(\vect x^0)& \dots & \partial_n f_m(\vect x^0)\end{bmatrix}=\begin{bmatrix} \nabla f_1(\vect x^0) \\ \vdots \\ \nabla f_m(\vect x^0) \end{bmatrix}$\\die \textcolor{red}{Jacobimatrix von $f$ in $\vect x^0$} und bezeichnen diese mit \textcolor{red}{$J_f(\vect x^0)$}. Für $m=n$ bezeichnen wir $\det(J_f(\vect x^0))$ als die \textcolor{red}{Jacobideterminante von $f$ in $\vect x^0$}.
+
+    
+    \end{minipage}
+};
+
+%------------ Jacobimatrix Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Partielle Ableitungen von $f:\R^n \to \K^m$};
+\end{tikzpicture}
+
+
+
+
+\end{multicols*}
+
+\end{document}
