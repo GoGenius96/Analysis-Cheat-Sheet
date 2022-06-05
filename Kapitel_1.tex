@@ -94,7 +94,7 @@
     \begin{minipage}{0.3\textwidth}
     $\R^n, \C^n$\\
     $\mathcal{C}^k(D)$ für $k\in\N_0\cup \{\infty\}$ - Raum der k-mal stetig diff.baren Funktionen mit Definitionsbereich $D$.\\
-    $\mathcal{L}^p(\Omega, \mathcal{A}, \mu) :=$\\$ \{f: \Omega \to \K | f\text{ ist messbar}, \int_\Omega |f(x)|^p d\mu(x) < \infty\}$
+    $\mathcal{L}^p(\Omega, \mathcal{A}, \mu) :=$\\$ \{f: \Omega \to \K | f\text{ ist messbar}, \int_\Omega \lvert f(x)\lvert^p d\mu(x) < \infty\}$
 
     \end{minipage}
 };
@@ -140,15 +140,15 @@
     \begin{minipage}{0.3\textwidth}
     Sei $(X, \Vert \cdot \Vert)$ ein normierter VR. Wir definieren:\\
     $B_\varepsilon(\vect x) := \{ y \in X| \Vert \vect x- \vect y \Vert < \varepsilon\}$ (\textcolor{red}{offener Ball um $\vect x$}).\\
-    $\Bar{B}_\varepsilon(\vect x) := \{ y \in X| \Vert \vect x- \vect y \Vert \leq \varepsilon\}$ (\textcolor{red}{abgesch. Ball um $\vect x$}).\\
+    $\overline{B}_\varepsilon(\vect x) := \{ y \in X| \Vert \vect x- \vect y \Vert \leq \varepsilon\}$ (\textcolor{red}{abgesch. Ball um $\vect x$}).\\
     $S_\varepsilon(\vect x) := \{ y \in X| \Vert \vect x- \vect y \Vert = \varepsilon\}$ (\textcolor{red}{Sphäre um $\vect x$}).\\
     \\
     $\vect x$ ist \textcolor{red}{innerer Punkt von $A$}, wenn $\exists \varepsilon>0: B_\varepsilon(\vect x) \subseteq A$. Die Menge aller inneren Punkte von $A$ heißt \textcolor{red}{das Innere von A} ($A^\circ$ oder int $A$).\\
     $\vect x$ heißt \textcolor{red}{Randpunkt von $A$}, wenn $\forall \varepsilon > 0: A \cap B_\varepsilon(\vect x) \neq \emptyset \text{ und } A^c \cap B_\varepsilon(\vect x) \neq \emptyset$. Die Menge aller  Randpunkte von $A$ heißt \textcolor{red}{der Rand von A} ($\partial{A}$).\\
     Die Menge $\Bar{A} = A \cup \partial{A}$ heißt \textcolor{red}{Abschluss von A}.
 
-    $\vect x$ heißt \textcolor{red}{Häufungspunkt von $A$}, wenn für $\forall \varepsilon > 0: |A \cap B_\varepsilon(\vect x)| = \infty$\\
-    $\vect x$ heißt \textcolor{red}{isolierter Punkt von $A$}, wenn $\exists \varepsilon > 0: B_\varepsilon(\vect x) \cap A = \{ \vect x \}. $\\
+    $\vect x$ heißt \textcolor{red}{Häufungspunkt von $A$}, wenn\\$\forall \varepsilon > 0: \lvert A \cap B_\varepsilon(\vect x)\lvert = \infty$\\
+    $\vect x$ heißt \textcolor{red}{isolierter Punkt von $A$}, wenn\\$\exists \varepsilon > 0: B_\varepsilon(\vect x) \cap A = \{ \vect x \}. $\\
     \\
     $A$ heißt \textcolor{red}{offen in X}, wenn $A = A^\circ$.\\
     $A$ heißt \textcolor{red}{abgeschlossen in $X$}, wenn $A^c$ offen ist.
@@ -164,7 +164,7 @@
     \begin{minipage}{0.3\textwidth}
     Sei $(X, \Vert \cdot \Vert)$ ein normierter VR, $A \subseteq X$, $A_i \subseteq X$ offen $\forall i \in \N$ und $B_j \subseteq X$ abgeschlossen $\forall j \in \N$. Dann gilt:
     \begin{enumerate}
-        \item $A$ ist offen $\iff \Bar{A}$ ist abgeschlossen.
+        \item $A$ ist offen $\iff A^c$ ist abgeschlossen.
         \item $X$ und $\emptyset$ sind offen und abgeschlossen.
         \item $\forall \vect x \in X: \{\vect x\}$ ist abgeschlossen.
         \item $\bigcup_{i = 1}^{\infty} A_i$ offen.
@@ -201,7 +201,7 @@
         \item $(\vect x^k)_{k \in \N}$ heißt \textcolor{red}{beschränkt}, wenn $\{\Vert \vect x^k \Vert| k \in \N\}$ in $\R$ beschränkt ist.
         \item $(\vect x^k)_{k \in \N}$ heißt \textcolor{red}{konvergent mit Limes $\vect y \in X$}, wenn $\forall \varepsilon > 0 \exists N \in \N \forall k>N: \Vert \vect x^k - \vect y \Vert < \varepsilon$
         \item $(\vect x^k)_{k \in \N}$ heißt \textcolor{red}{Cauchyfolge in $X$}, wenn\\ $\forall \varepsilon > 0 \exists N \in \N \forall k, l > N: \Vert \vect x^k - \vect x^l \Vert < \varepsilon$
-        \item $\vect y\in X$ heißt \textcolor{red}{Häufungspunkt von $(\vect x^k)_{k \in \N}$}, wenn $\forall \varepsilon > 0: |\{\vect x^k| k \in \N\} \cap B_\varepsilon(\vect y)| = \infty$\\
+        \item $\vect y\in X$ heißt \textcolor{red}{Häufungspunkt von $(\vect x^k)_{k \in \N}$}, wenn $\forall \varepsilon > 0: \lvert\{\vect x^k\lvert k \in \N\} \cap B_\varepsilon(\vect y)\lvert = \infty$\\
     \end{enumerate}
     \end{minipage}
 };
@@ -341,7 +341,7 @@ $(X,\Vert \cdot \Vert_X)$ und $(Y,\Vert \cdot \Vert_Y)$ als $X$ und $Y$.\\
 \begin{tikzpicture}
 \node [mybox] (box){%
     \begin{minipage}{0.3\textwidth}
-    Seien $f,g:X \to Y$ Fkt. stetig in $\vect x^0$ und $\lambda \in \K$. Dann sind $f+g$, $\lambda f$, $f\cdot g$, $\frac{f}{g}$ für $g \neq 0$, $\mid f \mid$, $\max\{g,f\}$, $\min\{g,f\}$, $f^+ = \max\{0,f\}$ und $f^- = -\min\{0,f\}$ stetig in $\vect x^0$ sofern überhaupt wohldefiniert.\\
+    Seien $f,g:X \to Y$ Fkt. stetig in $\vect x^0$ und $\lambda \in \K$. Dann sind $f+g$, $\lambda f$, $f\cdot g$, $\frac{f}{g}$ für $g \neq 0$, $\lvert f \lvert$, $\max\{g,f\}$, $\min\{g,f\}$, $f^+ = \max\{0,f\}$ und $f^- = -\min\{0,f\}$ stetig in $\vect x^0$ sofern überhaupt wohldefiniert.\\
     \\
     Ist $Z$ ein weiterer normierter VR und $h: Y \to Z$ eine Fkt. die stetig in $f(\vect x^0)$ ist. Dann ist $h \circ f: X \to Z$ stetig in $\vect x^0$, sofern überhaupt wohldefiniert.
     \end{minipage}
@@ -395,10 +395,10 @@ $(X,\Vert \cdot \Vert_X)$ und $(Y,\Vert \cdot \Vert_Y)$ als $X$ und $Y$.\\
 \node [mybox] (box){%
     \begin{minipage}{0.3\textwidth}
     Sei $n \in \N$ und $p = (p_1,\dots,p_n) \in (\N_0)^n$.\\
-    $p$ heißt \textcolor{red}{Multiindex} und $\mid p \mid:= p_1 + \dots + p_n$ heißt \textcolor{red}{Grad von $p$}.\\
-    Für $\vect x = (x_1,\dots,x_n) \in \K^n$ setze $x^p := x_1^{p_1} \cdot \dots \cdots x_n^{p_n}$. Die Funktion $f(\vect x) = x^p = x_1^{p_1} \cdot \dots \cdots x_n^{p_n}$ heißt\\ \textcolor{red}{Monom vom Grad $\mid p \mid$}.\\
+    $p$ heißt \textcolor{red}{Multiindex} und $\lvert p \lvert:= p_1 + \dots + p_n$ heißt \textcolor{red}{Grad von $p$}.\\
+    Für $\vect x = (x_1,\dots,x_n) \in \K^n$ setze $x^p := x_1^{p_1} \cdot \dots \cdots x_n^{p_n}$. Die Funktion $f(\vect x) = x^p = x_1^{p_1} \cdot \dots \cdots x_n^{p_n}$ heißt\\ \textcolor{red}{Monom vom Grad $\lvert p \lvert$}.\\
     Eine Linearkombination von Monomen heißt \textcolor{red}{Polynom}. D.h. $P$ ist ein Polynom, wenn $P:\K^n \to \K$, mit
-    $P(\vect x) = P((x_1,\dots,x_n)) = \sum_{k \geq \mid p\mid} a_px^p$ für $k \in \N_0$ und $a_p \in \K$.\\
+    $P(\vect x) = P((x_1,\dots,x_n)) = \sum_{k \geq \lvert p\lvert} a_px^p$ für $k \in \N_0$ und $a_p \in \K$.\\
     Für zwei Polynome $P, Q$ heißt $\frac{P}{Q}$ \textcolor{red}{rationale Funktion}.
     \end{minipage}
 };
