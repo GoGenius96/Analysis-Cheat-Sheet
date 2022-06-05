@@ -51,11 +51,13 @@
     rectangle, rounded corners, inner sep=10pt, inner ysep=10pt]
 \tikzstyle{fancytitle} =[fill=black, text=white, font=\bfseries]
 
+
+Sei im folgenden $A \subseteq \R^n$ und $\vect x^0 \in A$.\newline
 %------------ Partielle Ableitungen allgemein---------------
 \begin{tikzpicture}
 \node [mybox] (box){%
     \begin{minipage}{0.3\textwidth}
-    Sei $A \subseteq \R^n$, $f:A \to \K$, $\vect x^0 \in A$ und $j \in \{1,\dots,n\}$. Gibt es ein $\varepsilon > 0$, s.d. $\forall h \in (-\varepsilon, \varepsilon): \vect x^0 + h\vect e_j \in A$, so nennen wir $f$ \textcolor{red}{in $\vect x^0$ partiell differenzierbar nach $x_j$}, wenn der Grenzwert $\lim \limits_{h \to 0} \frac{f(\vect x^0 + h\vect e_j) - f(\vect x^0)}{h}$ existiert.
+    Sei $f:A \to \K$ und $j \in \{1,\dots,n\}$. Existiert ein $\varepsilon > 0$, s.d. $\forall h \in (-\varepsilon, \varepsilon): \vect x^0 + h\vect e_j \in A$, so nennen wir $f$ \textcolor{red}{in $\vect x^0$ partiell differenzierbar nach $x_j$}, wenn der Grenzwert $\lim \limits_{h \to 0} \frac{f(\vect x^0 + h\vect e_j) - f(\vect x^0)}{h}$ existiert.\\
     Den Grenzwert nennen wir dann \textcolor{red}{$j$-te partielle Ableitung von $f$ in $\vect x^0$} und wird bezeichnet durch: $\partial_j f(\vect x^0)$, $\partial_{x_j} f(\vect x^0)$, $\frac{\partial f(\vect x^0)}{\partial x_j}$, $f_{x_j}(\vect x^0)$, $D_jf(\vect x^0)$\\
     Randnotiz: Für $\vect x^0 \in \partial A$ definieren wir $\partial_j f(\vect x^0)$ so wie oben, bloss mit $h \in [0, \varepsilon)$ bzw. $h \in (\varepsilon, 0]$.\\
     \\
@@ -65,6 +67,7 @@
     
     \end{minipage}
 };
+
 
 %------------ Partielle Ableitungen Header ---------------------
 \node[fancytitle, right=10pt] at (box.north west) {Partielle Ableitungen von $f:\R^n \to \K$};
@@ -94,7 +97,7 @@
 \begin{tikzpicture}
 \node [mybox] (box){%
     \begin{minipage}{0.3\textwidth}
-    Sei $A \subseteq \R^n$, $f:A \to \K^m$, $\vect x^0 \in A$. Existieren alle partiellen Ableitungen $\partial_jf_l(\vect x^0)$ für $j\in \{1,\dots,n\}, l\in \{1,\dots,m\}$, dann nennen wir die $m \times n$-Matrix\\
+    Sei $f:A \to \K^m$. Existieren alle partiellen Ableitungen $\partial_jf_l(\vect x^0)$ für $j\in \{1,\dots,n\}, l\in \{1,\dots,m\}$, dann nennen wir die $m \times n$-Matrix\\
     $\begin{bmatrix} \partial_1 f_1(\vect x^0) & \dots & \partial_n f_1(\vect x^0)\\ \vdots &  & \vdots \\ \partial_1 f_m(\vect x^0)& \dots & \partial_n f_m(\vect x^0)\end{bmatrix}=\begin{bmatrix} \nabla f_1(\vect x^0) \\ \vdots \\ \nabla f_m(\vect x^0) \end{bmatrix}$\\die \textcolor{red}{Jacobimatrix von $f$ in $\vect x^0$} und bezeichnen diese mit \textcolor{red}{$J_f(\vect x^0)$}. Für $m=n$ bezeichnen wir $\det(J_f(\vect x^0))$ als die \textcolor{red}{Jacobideterminante von $f$ in $\vect x^0$}.
 
     
@@ -104,6 +107,101 @@
 %------------ Jacobimatrix Header ---------------------
 \node[fancytitle, right=10pt] at (box.north west) {Partielle Ableitungen von $f:\R^n \to \K^m$};
 \end{tikzpicture}
+
+
+%------------ Partielle Ableitung Eigenschaften ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Die $j$-te partielle Ableitung ist eine lineare Funktion. Somit sind auch der Gradient und die Jacobimatrix lineare Funktionen.\\
+    Das heißt $\forall \lambda \in \K, \forall l \in \{1,\dots, m\}, k \in \{1,\dots,n\}: $\\
+    $\partial_j(\lambda f+g)_l(\vect x^0) = \lambda \cdot \partial_j(f)_l(\vect x^0) + \partial_j(g)_l(\vect x^0)$\\
+    $\nabla(\lambda f+g)_l(\vect x^0) = \lambda \cdot \nabla f_l(\vect x^0) + \nabla g_l(\vect x^0)$\\
+    $J_{\lambda f+g}(\vect x^0) = \lambda \cdot J_f(\vect x^0) + J_g(\vect x^0)$
+    \end{minipage}
+};
+
+%------------ Partielle Ableitung Eigenschaften Header ---------------------
+\node[fill=blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Eigenschaften von partiellen Ableitungen};
+\end{tikzpicture}
+
+
+%------------ Jacobimatrix Beispiel ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Die Funktion $f:\R^3 \to \R^2$ sei gegeben durch $f(x_1,x_2,x_3) = \begin{pmatrix} x_1^2 + x_2^2\\ x_3^2 + x_3\cdot \sin(x_2) \\ x_2x_3 \end{pmatrix}$\\
+    $\partial_1f(x_1,x_2,x_3) = \begin{pmatrix} 2x_1\\ 0 \\ 0\end{pmatrix}$\\
+    $\partial_2f(x_1,x_2,x_3) = \begin{pmatrix} 2x_2^2 \\ x_3\cdot \cos(x_2)\\ x_3\end{pmatrix}$\\
+    $\partial_3f(x_1,x_2,x_3) = \begin{pmatrix} 0 \\ 2x_3 +\sin(x_2)\\ x_2\end{pmatrix}$\\
+    $J_f(x_1,x_2,x_3) = \begin{pmatrix} 2x_1 &  2x_2^2 & 0\\ 0 & x_3\cdot \cos(x_2) & 2x_3 +\sin(x_2) \\ 0 & x_3 & x_2\end{pmatrix}$\\
+    $J_f(1,0,1) = \begin{pmatrix} 2 &  0 & 0\\ 0 & 1 & 2 \\ 0 & 1 & 0\end{pmatrix}, \det(J_f(1,0,1)) = -4$. 
+    \end{minipage}
+};
+
+%------------ Jacobimatrix Beispiel Header ---------------------
+\node[fill=purple, text=white, font=\bfseries, right=10pt] at (box.north west) {Jacobimatrix Beispiel};
+\end{tikzpicture}
+
+
+%------------ Partielle Ableitungen höherer Ordnung Beispiel ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Sei $f:A \to \K^m$ und $k \in \N$.\\ Für jedes $p = (p_1,\dots,p_k) \in \{1,\dots,n\}^k$ nennen wir\\
+    $\partial_pf(\vect x^0) := \frac{\partial^kf(\vect x^0)}{\partial x_{p_1} \dots \partial x_{p_k}} := \partial_{p_1} \partial_{p_2} \dots \partial_{p_k} f(\vect x^0)$\\
+    die \textcolor{red}{partielle Ableitung $k$-ter Ordnung von $f$ in $\vect x^0$ nach $p$} (wenn existent). D.h. wir berechnen zuerst die $p_k$-te partielle Ableitung von $f$, dann davon die $p_{k-1}$-te partielle Ableitung, usw. und zum Schluss die $p_1$-te partielle Ableitung.\\
+    $f$ selbst wird auch als partielle Ableitung $0$-ter Ordnung bezeichnet.\\
+    \end{minipage}
+};
+
+%------------ Partielle Ableitungen höherer Ordnung Header ---------------------
+\node[fill=black, text=white, font=\bfseries, right=10pt] at (box.north west) {Partielle Ableitungen höherer Ordnung};
+\end{tikzpicture}
+
+
+%------------ Jacobideterminante Idee ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \includegraphics[scale = .35]{Jacobian_determinant.png}
+    Eine nicht-lineare Abbildung $f:\R^2\to\R^2$ transformiert ein Rechteck (links in rot) zu einer verzerrten Fläche (rechts in rot). Würden wir für das rote Rechteck die Funktionswerte mit Hilfe der Jacobimatrix linear approximieren, dann würden wir das rote Rechteck in das weiße durchsichtige Parallelprogramm überführen. Die Jacobideterminante ist das Verhältnis von der Fläche des ursprünglichen Rechtecks zum weißen durchsichtigen Parallelprogramm und dient, in der Umgebung von dem Punkt in dem wir sie berechnet haben, als Approximation für das Verhältnis von der Fläche des ursprünglichen Rechtecks zur verzerrten roten Fläche.
+    \end{minipage}
+};
+
+%------------ Jacobideterminante Idee Header ---------------------
+\node[fill=purple, text=white, font=\bfseries, right=10pt] at (box.north west) {Idee der Jacobideterminante};
+\end{tikzpicture}
+
+%------------ Satz von Schwarz ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Sei $f:A \to \K$. Sind alle partiellen Ableitungen 2-ter Ordnung von $f$ in $\vect x^0$ stetig, dann gilt:\\ $\forall i,j \in \{1,\dots,n\}: \partial_i \partial_j f(\vect x^0) = \partial_j \partial_i f(\vect x^0)$
+    
+    
+    \end{minipage}
+};
+
+%------------ Satz von Schwarz Header ---------------------
+\node[fill=blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Satz von Schwarz};
+\end{tikzpicture}
+
+%------------ C^k Raum ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Sei $f:A \to \K^m$ und $k \in \N_0$. Wir nennen $f$ eine \textcolor{red}{$C^k$-Funktion}, wenn für alle Koordinatenfunktionen $f_l$ alle partiellen Ableitungen der Ordnung 0 bis $k$ von $f_l$ in $A$ existieren und stetig sind.\\
+    Die Menge aller $\K^m$-wertigen $C^k$-Funktionen auf $A$ bezeichnen wir mit $C^k(A,\K^m)$.\\
+    Haben alle $f_l$ stetige partielle Ableitungen beliebiger Ordnung, so nennen wir $f$ eine \textcolor{red}{$C^\infty$-Funktion} oder \textcolor{red}{glatte Funktion}.
+    
+    \end{minipage}
+};
+
+%------------ C^k Raum Header ---------------------
+\node[fill=black, text=white, font=\bfseries, right=10pt] at (box.north west) {$C^k$-Funktionen};
+\end{tikzpicture}
+
 
 
 
