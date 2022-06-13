@@ -8,6 +8,8 @@
 \usepackage{tikz}
 \usetikzlibrary{decorations.pathmorphing}
 \usepackage{amsmath,amssymb}
+\usepackage{pgfplots}
+
 
 \usepackage{colortbl}
 \usepackage{xcolor}
@@ -44,6 +46,7 @@
 \newcommand{\hr}{\centerline{\rule{3.5in}{1pt}}}
 %\colorbox[HTML]{e4e4e4}{\makebox[\textwidth-2\fboxsep][l]{texto}
 \begin{document}
+
 
 \begin{multicols*}{3}
 
@@ -202,9 +205,119 @@ Sei im folgenden $A \subseteq \R^n$ und $\vect x^0 \in A$.\newline
 \node[fill=black, text=white, font=\bfseries, right=10pt] at (box.north west) {$C^k$-Funktionen};
 \end{tikzpicture}
 
+\newpage
+
+%------------ Totales Differential ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Sei $A$ offen und $f:A \to \R^m$ und $k \in \N_0$. Wir nennen $f$ \textcolor{red}{differenzierbar in $\vect x^0$}, wenn eine lineare Abbildung $L_{\vect x^0}: \R^n \to \R^m$ existiert, so dass\\
+    $\lim \limits_{\vect h \to 0} \frac{f(\vect x^0 + \vect h) - f(\vect x^0) - L_{\vect x^0}(\vect h)}{\Vert \vect h \Vert} = \vect 0$\\
+    Ist $f$ differenzierbar in $\vect x^0$, so nennen wir $L$ das \textcolor{red}{totales Differential} oder \textcolor{red}{totale Ableitung von $f$ in $\vect x^0$} und wir schreiben dann $Df(\vect x^0)$ statt $L$.
+    \end{minipage}
+};
+
+%------------ Totales Differential Header ---------------------
+\node[fill=black, text=white, font=\bfseries, right=10pt] at (box.north west) {Totales Differential/ Totale Ableitung};
+\end{tikzpicture}
 
 
 
+%------------ Totales Differential Intuition ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Im eindimensionalen haben wir die Ableitung bestimmt, indem wir zwischen $f(x^0)$ und $f(x^0 + h)$ eine Linie/Gerade (lineare Funktion)  zeichnen und davon die Steigung bestimmen. Die Ableitung ist dann diese Steigung für $h \to 0$. 
+    Im mehrdimensionalen reicht eine Gerade dafür nicht mehr aus, da es nun unendlich viele Punkte um $\vect x^0$ gibt, die Abstand $\Vert \vect h \Vert$ zu $\vect x^0$ haben. Das heißt wir brauchen eine Verallgemeinerung von "Linie"/"Gerade". Diese wäre im mehrdimensionalen eine lineare Abbildung $L$ für die gilt, dass für $\vect h \approx \vect 0$ gilt:
+    $f(\vect x^0 + h) \approx f(\vect x^0) + L(\vect h)$.
+    Von der linearen Abbildung $L$ können wir analog zu der Gerade im eindimensionalen die "Steigung"/Ableitung in alle Richtungen bestimmen. Wenn wir also den Grenzwert dazu bilden und dieser existiert, dann nennen wir diesen die totale Ableitung von $f$ in $\vect x^0$.\\
+    Geometrisch bedeutet differenzierbar, so wie im eindimensionalen, dass $f$ keine Sprünge und keine Knicke hat. Bei einer mehrdimensionalen Funktion kann man sich "Knick" als Falte oder Zacken vorstellen. Die Existenz der partiellen Ableitungen bedeutet nur, dass es keine Knicke in Richtung der Achsen gibt. Dennoch kann es in eine andere Richtung betrachtet Knicke geben. Deswegen folgt aus der Existenz der partiellen Ableitungen in $\vect x^0$ \textbf{nicht}, dass $f$ in $\vect x^0$ differenzierbar ist.
+    
+    \end{minipage}
+};
+
+%------------ Totales Differential Intuition Header ------------------
+\node[fill=purple, text=white, font=\bfseries, right=10pt] at (box.north west) {Idee/Intuition Totales Differential};
+\end{tikzpicture}
+
+
+%------------ Totales Differential Satz ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Sei $f:A \to \K^m$ differenzierbar in $\vect x^0$. Dann ist $f$ stetig in $\vect x^0$, alle $\partial_k f_l(\vect x^0)$ existieren und es gilt $Df(\vect x^0) = J_f(\vect x^0)$.
+    Im Fall von $m = 1$ gilt dann also $Df(\vect x^0) = \nabla f(\vect x^0)$
+    \end{minipage}
+};
+
+%------------ Totales Differential Satz Header ------------------
+\node[fill=blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Totales Differential Satz};
+\end{tikzpicture}
+
+
+%------------ Totales Differential Satz ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Sei $f:A \to \K^m$. Existieren alle $\partial_jf_l$ auf ganz $A$ und sind diese stetig in $\vect x^0$, so ist $f$ differenzierbar in $\vect x^0$.
+    \end{minipage}
+};
+
+%------------ Totales Differential Satz Header ------------------
+\node[fill=blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Totales Differential Satz};
+\end{tikzpicture}
+
+%------------ Kettenregel ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Sei $A_f \subseteq \R^n$ offen und $f: A_f \to \R^m$. \\Sei $f(A_f) \subseteq A_g \subseteq \R^m$ offen und $g: A_g \to \K^p$. Ist $f$ differenzierbar in $\vect x^0$ und $g$ differenzierbar in $f(\vect x^0)$, so ist $g \circ f:A_f \to \K^p$ differenzierbar in $\vect x^0$ und es gilt die Kettenregel:\\
+    $D(g\circ f)(\vect x^0) = Dg(f\vect x^0)) \circ Df(\vect x^0)$\\
+    Insbesondere gilt, wenn $f$ und $g$ differenzierbar sind, so ist auch $g \circ f$ differenzierbar.
+    \end{minipage}
+};
+
+%------------ Kettenregel Header ------------------
+\node[fill=blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Kettenregel};
+\end{tikzpicture}
+
+%------------ Weg-zusammenhängend ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Wir nennen $A$ \textcolor{red}{weg-zusammenhängend}, wenn für alle $\vect x, \vect y \in A$ eine stetige Funktion $p:[0,1] \to A$ existiert mit $p(0) = x$ und $p(1) = y$.\\Ist $p$ auch noch differenzierbar, dann nennen wir $A$ differenzierbar weg-zusammenhängend.
+    \end{minipage}
+};
+
+%------------ Weg-zusammenhängend Header ------------------
+\node[fill=black, text=white, font=\bfseries, right=10pt] at (box.north west) {Weg-zusammenhängend};
+\end{tikzpicture}
+
+
+%------------ Weg-zusammenhängend Beispiel---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \includegraphics[scale = .75]{path_conn.png}\\ Die Menge A ist weg-zusammenhängend, weil du alle Punkte aus der Menge mit einem stetigen Pfad innerhalb der Menge verbinden kannst.
+    Die Menge B ist nicht weg-zusammenhängend, da es keinen stetigen Pfad von einem Punkt aus der ersten "Bubble" zu einem Punkt in der letzten "Bubble" gibt.
+    \end{minipage}
+};
+
+%------------ Wegzusammenhängend Beispiel Header ------------------
+\node[fill=purple, text=white, font=\bfseries, right=10pt] at (box.north west) {Wegzusammenhängend};
+\end{tikzpicture}
+
+%------------ Gradient gleich 0 Satz Beispiel---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Ist $A$ differenzierbar weg-zusammenhängend und \\$f:A \to \K$ differenzierbar mit $\nabla f \equiv 0$, dann ist $f$ konstant.
+    \end{minipage}
+};
+
+%------------ Gradient gleich 0 Satz Header ------------------
+\node[fill=blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Konstante Funktion};
+\end{tikzpicture}
 
 \end{multicols*}
 

@@ -440,7 +440,7 @@ $(X,\Vert \cdot \Vert_X)$ und $(Y,\Vert \cdot \Vert_Y)$ als $X$ und $Y$.\\
     Die Funktion $\langle \cdot, \cdot \rangle: X \times X \to \K$ heißt \textcolor{red}{inneres Produkt} oder \textcolor{red}{Skalarprodukt} auf $X$, wenn gilt:
     \begin{itemize}
         \item $\forall \vect x \in X: \langle \vect x, \vect x \rangle \geq 0$ und $\langle \vect x, \vect x \rangle = 0 \iff \vect x = 0$
-        \item $\forall \vect x, \vect y \in \K: \langle \vect x, \vect y \rangle = \overline{\langle \vect y, \vect x \rangle}$
+        \item $\forall \vect x, \vect y \in X: \langle \vect x, \vect y \rangle = \overline{\langle \vect y, \vect x \rangle}$
         \item $\forall \vect x, \vect y, \vect z \in X, \lambda, \mu \in \K:\\ \langle \lambda \vect x + \mu \vect y, \vect z \rangle = \lambda \langle \vect x, \vect z \rangle + \mu \langle \vect y, \vect z \rangle$
     \end{itemize}
     Ist $\langle \cdot, \cdot \rangle$ ein Skalarprodukt auf $X$, so definiert\\
@@ -490,7 +490,7 @@ Ab jetzt bezeichnet $\langle \cdot, \cdot \rangle$ ein Skalarprodukt auf dem nor
 \node [mybox] (box){%
     \begin{minipage}{0.3\textwidth}
     Seien $\Vert \cdot \Vert_1$ und $\Vert \cdot \Vert_2$ zwei Normen auf $X$ (beliebige Normen. Nicht verwechseln mit Notation für 1-Norm und 2-Norm).\\
-    Dann heißen $\Vert \cdot \Vert_1$ und $\Vert \cdot \Vert_2$ \textcolor{red}{äquivalent}, wenn\\$\exists a,b \in \R^+ \forall \vect x \in X: a\Vert \vect x \Vert_1 \leq \Vert \vect y \Vert_2 \leq b \Vert \vect x \Vert_1$.\\
+    Dann heißen $\Vert \cdot \Vert_1$ und $\Vert \cdot \Vert_2$ \textcolor{red}{äquivalent}, wenn\\$\exists a,b \in \R^+ \forall \vect x \in X: a\Vert \vect x \Vert_1 \leq \Vert \vect x \Vert_2 \leq b \Vert \vect x \Vert_1$.\\
     In Worten: Normen sind äquivalent, wenn ihr Ergebnisse sich höchstens um einen konstanten Faktoren unterscheiden.
     \end{minipage}
 };
