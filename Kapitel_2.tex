@@ -304,7 +304,7 @@ Sei im folgenden $A \subseteq \R^n$ und $\vect x^0 \in A$.\newline
 };
 
 %------------ Wegzusammenhängend Beispiel Header ------------------
-\node[fill=purple, text=white, font=\bfseries, right=10pt] at (box.north west) {Wegzusammenhängend};
+\node[fill=purple, text=white, font=\bfseries, right=10pt] at (box.north west) {Weg-zusammenhängend};
 \end{tikzpicture}
 
 %------------ Gradient gleich 0 Satz Beispiel---------------
@@ -317,6 +317,35 @@ Sei im folgenden $A \subseteq \R^n$ und $\vect x^0 \in A$.\newline
 
 %------------ Gradient gleich 0 Satz Header ------------------
 \node[fill=blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Konstante Funktion};
+\end{tikzpicture}
+
+
+%------------ Richtungsableitung ---------------
+\begin{tikzpicture}
+\node [mybox] (box){
+    \begin{minipage}{0.3\textwidth}
+    Sei $\vect r \in \R^n$ mit $\Vert \vect r \Vert = 1$ und sei $f$ stetig differenzierbar in $\vect x^0$, dann nennen wir $\frac{\partial f}{\partial \vect r}(\vect x^0) := \frac{df(\vect x^0 + t\cdot \vect r)}{dt}(0)$ \textcolor{red}{(erste) Richtungsableitung von $f$ in Richtung $\vect r$ an der Stelle $\vect x^0$}.
+    \end{minipage}
+};
+
+%------------ Richtungsableitung Header ------------------
+\node[fill=black, text=white, font=\bfseries, right=10pt] at (box.north west) {Richtungsableitung};
+\end{tikzpicture}
+
+
+%------------ Richtungsableitung Satz Beispiel---------------
+\begin{tikzpicture}
+\node [mybox] (box){
+    \begin{minipage}{0.3\textwidth}
+    Sei $f:A \to \K$ differenzierbar in $\vect x^0$, so existieren für alle $\vect r \in R^n$ mit $\Vert \vect r \Vert = 1$ die Richtungsableitung $\frac{\partial f}{\partial \vect r}(\vect x^0)$ und es gilt
+    $\frac{\partial f}{\partial \vect r}(\vect x^0) = \nabla f(\vect x^0) \cdot \vect r$\\
+    \\
+    Die Richtung $\vect r = \frac{\nabla f(\vect x^0)}{\Vert \nabla f(\vect x^0) \Vert}_2$ ist die Richtung des steilsten Anstiegs an der Stelle $\vect x^0$.
+    \end{minipage}
+};
+
+%------------ Richtungsableitung Satz Header ------------------
+\node[fill=blue, text=white, font=\bfseries, right=10pt] at (box.north west) {Richtungsableitung Satz};
 \end{tikzpicture}
 
 \end{multicols*}
