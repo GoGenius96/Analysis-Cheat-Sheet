@@ -272,7 +272,7 @@ Sei im folgenden $A \subseteq \R^n$ und $\vect x^0 \in A$.\newline
 \node [mybox] (box){%
     \begin{minipage}{0.3\textwidth}
     Sei $A_f \subseteq \R^n$ offen und $f: A_f \to \R^m$. \\Sei $f(A_f) \subseteq A_g \subseteq \R^m$ offen und $g: A_g \to \K^p$. Ist $f$ differenzierbar in $\vect x^0$ und $g$ differenzierbar in $f(\vect x^0)$, so ist $g \circ f:A_f \to \K^p$ differenzierbar in $\vect x^0$ und es gilt die Kettenregel:\\
-    $D(g\circ f)(\vect x^0) = Dg(f\vect x^0)) \circ Df(\vect x^0)$\\
+    $D(g\circ f)(\vect x^0) = Dg(f(\vect x^0)) \circ Df(\vect x^0)$\\
     Insbesondere gilt, wenn $f$ und $g$ differenzierbar sind, so ist auch $g \circ f$ differenzierbar.
     \end{minipage}
 };
@@ -324,7 +324,7 @@ Sei im folgenden $A \subseteq \R^n$ und $\vect x^0 \in A$.\newline
 \begin{tikzpicture}
 \node [mybox] (box){
     \begin{minipage}{0.3\textwidth}
-    Sei $\vect r \in \R^n$ mit $\Vert \vect r \Vert = 1$ und sei $f$ stetig differenzierbar in $\vect x^0$, dann nennen wir $\frac{\partial f}{\partial \vect r}(\vect x^0) := \frac{df(\vect x^0 + t\cdot \vect r)}{dt}(0)$ \textcolor{red}{(erste) Richtungsableitung von $f$ in Richtung $\vect r$ an der Stelle $\vect x^0$}.
+    Sei $\vect r \in \R^n$ sei $f$ stetig differenzierbar in $\vect x^0$, dann nennen wir $\frac{\partial f}{\partial \vect r}(\vect x^0) := \frac{df(\vect x^0 + t\cdot \vect r)}{dt}(0)$ \textcolor{red}{(erste) Richtungsableitung von $f$ in Richtung $\vect r$ an der Stelle $\vect x^0$}.
     \end{minipage}
 };
 
@@ -337,10 +337,10 @@ Sei im folgenden $A \subseteq \R^n$ und $\vect x^0 \in A$.\newline
 \begin{tikzpicture}
 \node [mybox] (box){
     \begin{minipage}{0.3\textwidth}
-    Sei $f:A \to \K$ differenzierbar in $\vect x^0$, so existieren für alle $\vect r \in R^n$ mit $\Vert \vect r \Vert = 1$ die Richtungsableitung $\frac{\partial f}{\partial \vect r}(\vect x^0)$ und es gilt
+    Sei $f:A \to \K$ differenzierbar in $\vect x^0$, so existieren für alle $\vect r \in R^n$ die Richtungsableitung $\frac{\partial f}{\partial \vect r}(\vect x^0)$ und es gilt
     $\frac{\partial f}{\partial \vect r}(\vect x^0) = \nabla f(\vect x^0) \cdot \vect r$\\
     \\
-    Die Richtung $\vect r = \frac{\nabla f(\vect x^0)}{\Vert \nabla f(\vect x^0) \Vert}_2$ ist die Richtung des steilsten Anstiegs an der Stelle $\vect x^0$.
+    Wenn der Vektor $\vect r$ zusätzlich normiert ist, d.h. $\Vert \vect r \Vert = 1$, dann ist $\frac{\nabla f(\vect x^0)}{\Vert \nabla f(\vect x^0) \Vert}_2$ die Richtung des steilsten Anstiegs an der Stelle $\vect x^0$.
     \end{minipage}
 };
 
