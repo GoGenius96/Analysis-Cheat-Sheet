@@ -1,0 +1,148 @@
+\documentclass{article}
+\usepackage[landscape]{geometry}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{amsmath,amssymb}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\makeatletter
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\m}{\cdot}
+\newcommand{\vect}[1]{\mathbf{#1}} 
+
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+
+\title{Analysis 2 Cheat Sheet}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+
+\advance\topmargin-.8in
+\advance\textheight3in
+\advance\textwidth3in
+\advance\oddsidemargin-1.5in
+\advance\evensidemargin-1.5in
+\parindent0pt
+\parskip2pt
+\newcommand{\hr}{\centerline{\rule{3.5in}{1pt}}}
+%\colorbox[HTML]{e4e4e4}{\makebox[\textwidth-2\fboxsep][l]{texto}
+\begin{document}
+
+
+\begin{multicols*}{3}
+
+\tikzstyle{mybox} = [draw=black, fill=white, very thick,
+    rectangle, rounded corners, inner sep=10pt, inner ysep=10pt]
+\tikzstyle{fancytitle} =[fill=black, text=white, font=\bfseries]
+
+
+Sei im folgenden $X$ ein normierter Vektorraum, $A \subseteq X$, $f:A\to \R$ eine Funktion und $\vect x^0 \in A$.\newline
+%------------ Globales/Lokales Minimum/Maximum allgemein---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $f$ hat in $\vect x^0$ ein \textcolor{red}{(strenges) globales Maximum}, wenn $\forall \vect x \in A\backslash \{\vect x^0\}: f(\vect x) \leq f(\vect x^0)$ \hspace{5pt} (bzw. \hspace{5pt} $f(\vect x) < f(\vect x^0)$)\\
+    \newline
+    $f$ hat in $\vect x^0$ ein \textcolor{red}{(strenges) globales Minimum}, wenn $\forall \vect x \in A\backslash \{\vect x^0\}: f(\vect x) \geq f(\vect x^0)$ \hspace{5pt} (bzw. \hspace{5pt} $f(\vect x) > f(\vect x^0)$)\\
+    \newline
+    $f$ hat in $\vect x^0$ ein \textcolor{red}{(strenges) lokales Maximum}, wenn $\exists \varepsilon > 0 \forall \vect x \in B_{\varepsilon}(\vect x^0) \cap A\backslash \{\vect x^0\}: f(\vect x) \leq f(\vect x^0)$ \hspace{5pt} (bzw. \hspace{5pt} $f(\vect x) < f(\vect x^0)$)\\
+    \newline
+    $f$ hat in $\vect x^0$ ein \textcolor{red}{(strenges) lokales Minimum}, wenn $\exists \varepsilon > 0 \forall \vect x \in B_{\varepsilon}(\vect x^0) \cap A\backslash \{\vect x^0\}: f(\vect x) \geq f(\vect x^0)$ \hspace{5pt} (bzw. \hspace{5pt} $f(\vect x) > f(\vect x^0)$)\\
+    \newline
+    \textbf{\textcolor{red}{!}} Jedes globale Minimum/Maximum ist auch ein lokales Minimum/Maximum.
+    \end{minipage}
+};
+
+%------------ Globales/Lokales Minimum/Maximum Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Globales/Lokales Minimum/Maximum};
+\end{tikzpicture}
+
+%------------ Min-Max Dualität allgemein---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Wenn $f$ in $\vect x^0$ ein lokales Minimum (Maximum) hat, dann hat $-f$ in $\vect x^0$ ein lokales Maximum (Minimum).
+    \end{minipage}
+};
+
+%------------ Min-Max Dualität Header ---------------------
+\node[fancytitle, fill = blue, right=10pt] at (box.north west) {Min-Max Dualität};
+\end{tikzpicture}
+
+%------------ Kompakte Mengen allgemein---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Wir nennen $A$ \textcolor{red}{kompakt}, wenn jede Folge in $A$ eine konvergente Teilfolge hat, deren Grenzwert in $A$ liegt.
+    \end{minipage}
+};
+
+%------------ Kompakte Mengen Header ---------------------
+\node[fancytitle, fill = black, right=10pt] at (box.north west) {Kompakte Mengen};
+\end{tikzpicture}
+
+%------------ Kompakte Mengen Satz allgemein---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \begin{itemize}
+        \item Ist $A$ kompakt, so ist $A$ abgeschlossen und beschränkt.
+        \item Ist $A$ kompakt und $B \subseteq A$ abgeschlossen, so ist $B$ kompakt.
+        \item (Satz von Heine-Borel) Für $A \subseteq \K^n$ gilt:\\
+        $A$ ist kompakt $\iff A $ ist abgeschlossen und beschränkt
+        \item Sei $Y$ ein normierter VR, $A$ kompakt und\\$f:A \to Y$ eine stetige Funktion, dann ist $f(A)$ kompakt in $Y$.
+        \item Ist $A$ kompakt und $f$ stetig, so $\exists \vect x_m, \vect x_M \in A$, so dass $f$ in $\vect x_m$ ein globales Minimum und in $\vect x_M$ ein globales Maximum hat.
+    \end{itemize}
+    \end{minipage}
+};
+
+%------------ Kompakte Mengen Satz Header ---------------------
+\node[fancytitle, fill = blue, right=10pt] at (box.north west) {Kompakte Mengen Sätze};
+\end{tikzpicture}
+
+%------------ Satz von Taylor allgemein---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Ist $I \subseteq \R$ ein offenes Intervall und $x_0, x \in I$ und $x \neq a$. Ist $f \in C^{n+1}(I,\K)$ für $n \in \N_0$, so gilt:\\
+    $f(x) = T_n(x,x_0) + R_n(x,x_0)$, wobei \\
+    \[T_n(x,x_0) := \sum_{k=0}^n \frac{f^{(k)}(x_0)}{k!}(x-x_0)^k \] und
+    \[R_n(x,x_0) := \int_{x_0}^x \frac{f^{(n+1)}(t)}{n!}(x-t)^n dt  \] Wir nennen $T_n(x,x_0)$ das \textcolor{red}{n-te Taylorpolynom an der Stelle $x_0$} und $R_n(x,x_0)$ das \textcolor{red}{n-te Restglied (in Integralform)}\\
+    \newline
+    Für $\K = \R$ gilt ausserdem: Es existiert ein $\theta$ im Intervall $(x,x_0)$ bzw. $(x_0,x)$, für das gilt:\\
+    \[R_n(x,x_0) = \frac{f^{(n+1)}(\theta)}{(n+1)!}(x-x_0)^{(n+1)}\]\\
+    Wir nennen das dann das \textcolor{red}{n-te Restglied (in Lagrangeform)}
+    \end{minipage}
+};
+
+%------------ Satz von Taylor Header ---------------------
+\node[fancytitle, fill = blue, right=10pt] at (box.north west) {Satz von Taylor in $\R$};
+\end{tikzpicture}
+
+
+
+
+
+\end{multicols*}
+
+\end{document}
